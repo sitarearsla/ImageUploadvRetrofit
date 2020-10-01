@@ -14,9 +14,9 @@ public class OkHttpCreator {
                 return chain.proceed(chain
                         .request()
                         .newBuilder()
-                        .header("Body", "multipart/form-data")
-                        .header("X-Atlassian-Token", "no-check")
                         .header("Authorization", "Bearer " + token)
+                        .header("Content-Type", "multipart/form-data")
+                        .header("X-Atlassian-Token", "nocheck")
                         .build()
                 );
             }

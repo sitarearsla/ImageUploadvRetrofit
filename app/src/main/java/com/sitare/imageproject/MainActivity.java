@@ -92,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
         JiraAPI jiraAPI = retrofit.create(JiraAPI.class);
 
-        RequestBody filePart = RequestBody.create(MediaType.parse("*/*"), file);
+        RequestBody filePart = RequestBody.create(MediaType.parse("application/octet-stream"), file);
 
-        MultipartBody.Part partfile = MultipartBody.Part.createFormData("file", "file", filePart);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", "file", filePart);
 
-        Call<ResponseBody> call = jiraAPI.upload("JIR-168", partfile);
+        Call<ResponseBody> call = jiraAPI.upload("JIR-168", body);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
